@@ -10,6 +10,7 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import DrawerComponent from "./Drawer";
+import useAuth from "../hooks/useAuth";
 
 const useStyles = makeStyles((theme) => ({
     navlinks: {
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: "none",
         color: "white",
         fontSize: "20px",
-        marginLeft: theme.spacing(20),
+        marginLeft: theme.spacing(10),
         "&:hover": {
             color: "yellow",
         },
@@ -35,13 +36,14 @@ function Navbar() {
     const classes = useStyles();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+    const { user, logout } = useAuth()
 
     return (
         <AppBar position="static">
             <CssBaseline />
             <Toolbar>
                 <Typography variant="h4" className={classes.logo}>
-                    Navbar
+                    Igneous Courier
 
                 </Typography>
                 {isMobile ? (
@@ -54,12 +56,15 @@ function Navbar() {
                         <Link to="/about" className={classes.link}>
                             About
                         </Link>
-                        <Link to="/contact" className={classes.link}>
-                            Contact
+                        {user.email && <Link to="/myOrder" className={classes.link}>
+                            My Order
+                        </Link>}
+                        <Link to="/AddService" className={classes.link}>
+                            Add Service
                         </Link>
-                        <Link to="/faq" className={classes.link}>
-                            FAQ
-                        </Link>
+                        {user.email && <Link onClick={logout} to="/login" className={classes.link}>
+                            Logout
+                        </Link>}
                     </div>
                 )}
             </Toolbar>

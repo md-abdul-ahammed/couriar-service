@@ -1,0 +1,9 @@
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.css-1pysi21-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled {
+    font-weight: bold;
+    color: #333 !important;
+}

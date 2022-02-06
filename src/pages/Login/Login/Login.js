@@ -11,14 +11,20 @@ import { FcGoogle } from 'react-icons/fc'
 import { NavLink } from 'react-router-dom';
 import useAuth from "../../../hooks/useAuth";
 import { useHistory } from "react-router";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
-    const { loginUser, signInWithGoogle, logout, user } = useAuth();
+    const { loginUser, signInWithGoogle, user } = useAuth();
     const history = useHistory();
+    const location = useLocation();
+
+    const signUpWithGoogle = () => {
+        signInWithGoogle(history, location);
+    }
 
     const onSubmit = data => {
-        loginUser(data.email, data.password, history)
+        loginUser(data.email, data.password, location, history)
     }
 
     return (
@@ -67,13 +73,10 @@ const Login = () => {
                         Or Login Using
                     </Box>
                     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                        <Button onClick={signInWithGoogle}>
+                        <Button onClick={signUpWithGoogle}>
                             <FcGoogle style={{ fontSize: "2rem" }} />
                         </Button>
                     </Box>
-                    {
-                        user.email &&
-                        <button onClick={logout}>Logout</button>}
                 </form>
             </Box>
         </Box>

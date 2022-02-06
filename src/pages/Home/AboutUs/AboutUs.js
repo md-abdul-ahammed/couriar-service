@@ -10,7 +10,7 @@ const AboutUs = () => {
     return (
         <Container>
             <Grid container style={{ justifyContent: "space-between", alignItems: "center" }} sx={{ py: 16 }} spacing={2}>
-                <Grid md={5}>
+                <Grid item md={5}>
                     <Typography style={{ fontWeight: "bold" }} variant="h4" gutterBottom component="div">
                         ABOUT US
                     </Typography>
@@ -57,7 +57,7 @@ const AboutUs = () => {
                         </Box>
                     </Box>
                 </Grid>
-                <Grid md={7}>
+                <Grid item md={7}>
                     <img style={{ paddingLeft: "5rem" }} sx={{ w: 1 }} src={carImg} alt="" />
                 </Grid>
             </Grid>

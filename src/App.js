@@ -11,6 +11,9 @@ import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
 import Home from './pages/Home/Home/Home';
 import Navbar from './components/Navbar';
 import Services from './pages/Home/Services/Services';
+import Order from './pages/Order/Order';
+import AddService from './pages/AddService/AddService';
+import MyOrder from './pages/MyOrder/MyOrder';
 
 
 function App() {
@@ -19,6 +22,9 @@ function App() {
       <Router>
         <Navbar></Navbar>
         <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
           <Route path="/login">
             <Login />
           </Route>
@@ -28,9 +34,15 @@ function App() {
           <Route path="/services">
             <Services />
           </Route>
-          <Route path="/">
-            <Home />
+          <Route path="/AddService">
+            <AddService />
           </Route>
+          <PrivateRoute path="/myOrder">
+            <MyOrder />
+          </PrivateRoute>
+          <PrivateRoute path="/order/:serviceId">
+            <Order />
+          </PrivateRoute>
         </Switch>
       </Router>
     </AuthProvider>
