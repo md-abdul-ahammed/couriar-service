@@ -8,70 +8,65 @@ import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 const Calculate = () => {
     const options = useMemo(() => countryList().getData(), []);
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const [widthPrice, setWidthPrice] = useState(20)
-    const [heightPrice, setHeightPrice] = useState(15)
-    const [depthPrice, setDepthPrice] = useState(12)
-    const [weightPrice, setWeightPrice] = useState(30)
     const [totalCost, setTotalCost] = useState(null);
 
     const onSubmit = data => {
-        setTotalCost(null)
+        let widthPrice = 20;
+        let heightPrice = 15;
+        let depthPrice = 12;
+        let weightPrice = 30;
         if (parseInt(data.width) > 100) {
-            let perFiveCmWidthPrice = 2;
-            let width = parseInt(data.width);
-            let additionalWidth = width - 100;
+            const perFiveCmWidthPrice = 2;
+            const width = parseInt(data.width);
+            const additionalWidth = width - 100;
             if (additionalWidth % 5 === 0) {
-                let find = additionalWidth / 5;
-                setWidthPrice(20 + (find * perFiveCmWidthPrice))
+                const find = additionalWidth / 5;
+                widthPrice = (widthPrice + (find * perFiveCmWidthPrice))
             } else {
-                let find = Math.floor(additionalWidth / 5);
-                setWidthPrice(20 + (find * perFiveCmWidthPrice))
+                const find = Math.floor(additionalWidth / 5);
+                widthPrice = (widthPrice + (find * perFiveCmWidthPrice))
             }
         }
         if (parseInt(data.height) > 100) {
-            let perFiveCmHeightPrice = 3;
-            let height = parseInt(data.height);
-            let additionalHeight = height - 100;
+            const perFiveCmHeightPrice = 3;
+            const height = parseInt(data.height);
+            const additionalHeight = height - 100;
             if (additionalHeight % 5 === 0) {
-                let find = additionalHeight / 5;
-                setHeightPrice(15 + (find * perFiveCmHeightPrice))
+                const find = additionalHeight / 5;
+                heightPrice = (heightPrice + (find * perFiveCmHeightPrice))
             } else {
-                let find = Math.floor(additionalHeight / 5);
-                setHeightPrice(15 + (find * perFiveCmHeightPrice))
+                const find = Math.floor(additionalHeight / 5);
+                heightPrice = (heightPrice + (find * perFiveCmHeightPrice))
             }
         }
         if (parseInt(data.depth) > 100) {
-            let perFiveCmDepthPrice = 1;
-            let depth = parseInt(data.depth);
-            let additionalDepth = depth - 100;
+            const perFiveCmDepthPrice = 1;
+            const depth = parseInt(data.depth);
+            const additionalDepth = depth - 100;
             if (additionalDepth % 5 === 0) {
                 let find = additionalDepth / 5;
-                setDepthPrice(12 + (find * perFiveCmDepthPrice))
+                depthPrice = (depthPrice + (find * perFiveCmDepthPrice))
             } else {
                 let find = Math.floor(additionalDepth / 5);
-                setDepthPrice(12 + (find * perFiveCmDepthPrice))
+                depthPrice = (depthPrice + (find * perFiveCmDepthPrice))
             }
         }
         if (parseInt(data.weight) > 50) {
-            let perFiveGmWeightPrice = 3;
-            let weight = parseInt(data.weight);
-            let additionalWeight = weight - 100;
+            const perFiveGmWeightPrice = 3;
+            const weight = parseInt(data.weight);
+            const additionalWeight = weight - 100;
             if (additionalWeight % 5 === 0) {
-                let find = additionalWeight / 5;
-                setWeightPrice(30 + (find * perFiveGmWeightPrice))
+                const find = additionalWeight / 5;
+                weightPrice = (weightPrice + (find * perFiveGmWeightPrice))
             } else {
-                let find = Math.floor(additionalWeight / 5);
-                setWeightPrice(30 + (find * perFiveGmWeightPrice))
+                const find = Math.floor(additionalWeight / 5);
+                weightPrice = (weightPrice + (find * perFiveGmWeightPrice))
             }
         }
         const total = widthPrice + heightPrice + depthPrice + weightPrice + 100;
         setTotalCost(total)
     };
-    console.log(heightPrice);
-    console.log(widthPrice);
-    console.log(depthPrice);
-    console.log(weightPrice);
-    console.log(totalCost);
+
 
     return (
         <Container>

@@ -14,6 +14,9 @@ import Services from './pages/Home/Services/Services';
 import Order from './pages/Order/Order';
 import AddService from './pages/AddService/AddService';
 import MyOrder from './pages/MyOrder/MyOrder';
+import ManageAllServices from './pages/ManageServices/ManageServices';
+import UpdateService from './pages/UpdateService/UpdateService';
+
 
 
 function App() {
@@ -36,6 +39,12 @@ function App() {
           </Route>
           <Route path="/AddService">
             <AddService />
+          </Route>
+          <Route path="/manageAllServices">
+            <ManageAllServices />
+          </Route>
+          <Route path="/update/:serviceId">
+            <UpdateService />
           </Route>
           <PrivateRoute path="/myOrder">
             <MyOrder />

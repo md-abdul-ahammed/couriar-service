@@ -13,7 +13,7 @@ const Order = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/services/${serviceId}`)
+        fetch(`https://mysterious-badlands-52613.herokuapp.com/services/${serviceId}`)
             .then(res => res.json())
             .then(data => setService(data))
     }, [serviceId]);
@@ -27,7 +27,7 @@ const Order = () => {
         data.product_type = product_type;
         data.user_email = user.email
 
-        fetch('http://localhost:5000/order', {
+        fetch('https://mysterious-badlands-52613.herokuapp.com/order', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

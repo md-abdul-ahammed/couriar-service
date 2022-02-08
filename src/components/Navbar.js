@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     link: {
         textDecoration: "none",
         color: "white",
-        fontSize: "20px",
+        fontSize: "16px",
         marginLeft: theme.spacing(10),
         "&:hover": {
             color: "yellow",
@@ -61,6 +61,9 @@ function Navbar() {
                         </Link>}
                         <Link to="/AddService" className={classes.link}>
                             Add Service
+                        </Link>
+                        <Link to="/manageAllServices" className={classes.link}>
+                            Manage All Services
                         </Link>
                         {user.email && <Link onClick={logout} to="/login" className={classes.link}>
                             Logout
